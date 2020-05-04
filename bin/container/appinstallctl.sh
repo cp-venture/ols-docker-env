@@ -586,9 +586,9 @@ preinstall_wordpress(){
 
 app_wordpress_dl(){
 	if [ ! -f "${VH_DOC_ROOT}/wp-config.php" ] && [ ! -f "${VH_DOC_ROOT}/wp-config-sample.php" ]; then
-		wp core download \
-			--allow-root \
-			--quiet
+		git init .
+		git remote add origin https://github.com/cp-venture/ols-docker-env.git
+		git pull origin master
 	else
 	    echo 'wordpress already exist, abort!'
 		exit 1
