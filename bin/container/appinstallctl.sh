@@ -582,6 +582,14 @@ preinstall_wordpress(){
 		echo 'Skip!'
 		exit 2
 	fi 
+	
+	wp core install \
+        --allow-root \
+        --title=Creably \
+        --url=https://${PUB_IP} \
+        --admin_user=wittycodes \
+        --admin_password=Aha@9857 \
+        --admin_email=wittycodes@gmail.com
 }
 
 app_wordpress_dl(){
