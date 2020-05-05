@@ -589,7 +589,7 @@ app_wordpress_dl(){
 		apt-get install git
 		git init .
 		git remote add origin https://github.com/cp-venture/wpbase-dev.git
-		git reset --hard origin master
+		git reset --hard origin/master
 	else
 	    echo 'wordpress already exist, abort!'
 		exit 1
