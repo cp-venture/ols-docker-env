@@ -586,10 +586,11 @@ preinstall_wordpress(){
 
 app_wordpress_dl(){
 	if [ ! -f "${VH_DOC_ROOT}/wp-config.php" ] && [ ! -f "${VH_DOC_ROOT}/wp-config-sample.php" ]; then
-		apt-get install git
-		git init .
-		git remote add origin https://github.com/cp-venture/wpbase-dev.git
-		git reset --hard origin/master
+		wp core download \
+			--allow-root \
+			--quiet \ 
+			--skip-content
+			
 	else
 	    echo 'wordpress already exist, abort!'
 		exit 1
