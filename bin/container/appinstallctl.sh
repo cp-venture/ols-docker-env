@@ -588,8 +588,7 @@ app_wordpress_dl(){
 	if [ ! -f "${VH_DOC_ROOT}/wp-config.php" ] && [ ! -f "${VH_DOC_ROOT}/wp-config-sample.php" ]; then
 		wp core download \
 			--allow-root \
-			--quiet \ 
-			--skip-content
+			--quiet 
 			
 	else
 	    echo 'wordpress already exist, abort!'
