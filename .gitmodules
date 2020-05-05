@@ -1,7 +1,7 @@
-[submodule "theme"]
+[submodule "sites/localhost/html/wp-content/themes/main"]
 	path = sites/localhost/html/wp-content/themes/main
 	url = ../wpbase-theme.git
 
-[submodule "plugins"]
+[submodule "sites/localhost/html/wp-content/plugins"]
 	path = sites/localhost/html/wp-content/plugins
 	url = ../wpbase-plugins.git
