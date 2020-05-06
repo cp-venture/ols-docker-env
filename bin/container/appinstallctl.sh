@@ -612,21 +612,19 @@ change_owner(){
 		fi
 }
 
+
 run_misc_scripts(){
 
 	
 	if [ ! -f "${VH_DOC_ROOT}/wp-config.php" ] && [ ! -f "${VH_DOC_ROOT}/wp-config-sample.php" ]; then
 		true
 	else
-		cd ../misc_scripts
-		wp eval-file updraft_db_init.php
-
-
-		
+		misc_dir=../misc_scripts
+		value="$(cat "$misc_dir/updraft_settings.json")"
+		wp eval-file "$misc_dir/updraft_db_init.php" "$value" --allow-root
 	fi
-	cd ../html 
-
 }
+
 
 main(){
 	set_vh_docroot ${DOMAIN}
