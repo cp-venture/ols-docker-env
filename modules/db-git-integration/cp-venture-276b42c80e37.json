@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cp-venture",
+  "private_key_id": "276b42c80e37dc6ce5d21a7af9bc1a716db9105a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCXkflcxyODZn8U\nF7APPrp8WHmfZFfntZTKz2iMg6k+I8W+zqVRGjvbAlsVJBQoiVbWfQZ7OBNU305b\nVP86V3BTrVh5I2NCStC1tEUx6gfgtHk6xJOzPM1uLAunxx9UEUABc+JVvY9yx47n\nbiEJp5B6x1WZ3kGZzlysIGZpSP+l1E4wKafPJA6W/WX5Qn5cjhf3qNrn7RpHQkjB\nW6fST/Ic/wwQHyY5OYi50PBXCjXiEe6NtVd7tCYNl0T7He/n5WNcBIF0hlJvhcjf\ndcUUVMIczESerrNLa5cqHuk1dIU7lm6eJjs8LNI7AJTpef3pESKiMCJGM2680XiL\n5utA/PH9AgMBAAECggEABXOWzEtN+oYUuwRxF33yQietKYT36RnDAhpnUGp/NgDJ\nC32uPNZcjG+EwXlnOjVaXg49eJrB4z3Bjo+7kFMgc09a98cZ5QKriBA1pD/JIcAL\n/jJKJ6+0/ynuug2ePFf/J9jjAqIgnIhomj1VSzNvgw2pWrE/mx3CKooNyj/5u0fz\nMTdsJqI7duEV75HrtOHVC/o9t+/vsfhHlyvhXvnZSit1UU+9Ok/2cGWwa+dnVoZG\nyrF5Atg7XtYbIDfOFECrZZmbYGv7bkSKpm1gKHsfqsUUsrn73bFiztN1EwSC9tiE\nRS1NfAr+DDG7ZSs5BXJU9gUksyXedPSnZ8G7JjWStwKBgQDScpzXNXqNZtbciWH6\nJMsQwc574c6xhEu4W32qBAEFGcrsn4eKcss+V2K+u/Pc4tWME5hPDiEwYj5AQco0\nWUZO64ZhjGFCYaKLvsxpYhtYIKlZ37nsoiSVyQcMFkP0w42gpKWRxiS2MmUSe/XG\ne91nA1Nw7XGFvQoxOnyglHtHswKBgQC4YNM90IUzqxFcYp/ruL5+GWKmLU7w9l9J\n9G6z87eJsPZ0ZNavhHynRmofZ4TYU3b190B9BGZj4LrI/gJWUBw/ubXJhsu3BnzH\nZzc9xeMqY+GqvoUjX2FqFm9IkjFqwyMFJJxf+GoY+PAfAr63QRs3X7cOLB0EscB4\nPHUuNS4HjwKBgGK9LcN3rwl7L+KHfvXbn388P4I2X0FA3jogiyRi/ouDH4fIDdMy\nqxOT8pulGfUQZLt1Uif9bCsEXUrO022eWXOb5BAOym9X2ekRW10yj7vYjzzA0L4r\nEVlJ2cmdBMNpoSC3P4vW2NC3cl6q1JUM9sNndxXsAjCKkqaoV2MMZ48rAoGAY0Kt\nNrAVpdVIyWXHFo4k75oXA8OMpijc7+GJ35MrkhMU+2B2O5Ol0CAWbcW7PQLiHlT4\nANXnkYmgxSgKdhE2xA/kkBPjhCsX7fnhQX5RZ7bR/KwI3RwyQ3zEeFtMA1/+cHxf\nO0NvSvZpvygpKFsCnfMHh7ez/5z6M0DJDRFQMH0CgYAuKucVzFJw/Csi0C8ZV6Xh\nAJ9vPIqpTytiQf1N4akWyom+lZim6KVkcO9DzgpiG0uoYUtarm2/LxwjFzBnWgPF\nvujm6k44/ERP8+0LzWvuSARkCyVmnC7wQ9Cz58cWBP89H+uCiNkXwGpHukAr4qsE\nCEtMBlnb/x75db8ChoopOg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cp-deamon@cp-venture.iam.gserviceaccount.com",
+  "client_id": "106110509587296193434",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cp-deamon%40cp-venture.iam.gserviceaccount.com"
+}
