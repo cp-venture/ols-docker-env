@@ -612,12 +612,29 @@ change_owner(){
 		fi
 }
 
+run_misc_scripts(){
+
+	
+	if [ ! -f "${VH_DOC_ROOT}/wp-config.php" ] && [ ! -f "${VH_DOC_ROOT}/wp-config-sample.php" ]; then
+		true
+	else
+		cd ../misc_scripts
+		wp eval-file updraft_db_init.php
+
+
+		
+	fi
+	cd ../html 
+
+}
+
 main(){
 	set_vh_docroot ${DOMAIN}
 	get_owner
 	cd ${VH_DOC_ROOT}
 	if [ "${APP_NAME}" = 'wordpress' ] || [ "${APP_NAME}" = 'wp' ]; then
 		check_sql_native
+		run_misc_scripts
 		app_wordpress_dl
 		preinstall_wordpress
 		install_wp_plugin
