@@ -21,18 +21,24 @@ git clone https://github.com/cp-venture/ols-docker-env.git
 git submodule update --init --recursive
 git submodule update --remote --recursive
 ```
-```
-cd ols-docker-env 
-sh ./bin/deploy.sh
-```
-
-
 Open a terminal, `cd` to the folder in which `docker-compose.yml` is saved, and run:
 ```
 docker-compose up
 ```
 
 Note: If you wish to run a single web server container, please see the [usage method here](https://github.com/litespeedtech/ols-dockerfiles#usage).
+
+Deploy wordpress assets into running docker compose containters
+```
+cd ols-docker-env 
+sh ./bin/deploy.sh
+```
+
+Run S3 Backup for Database Snapshot
+```
+python3 ./modules/db-git-integration/s3_engine.py
+```
+
 
 ## Components
 The docker image installs the following packages on your system:
