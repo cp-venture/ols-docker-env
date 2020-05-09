@@ -1,5 +1,5 @@
-# OpenLiteSpeed WordPress Docker Container
-## CP Dev Docker Environment 
+# CP Dev Docker Environment 
+## OpenLiteSpeed WordPress Docker Container
 [![Build Status](https://travis-ci.com/litespeedtech/ols-docker-env.svg?branch=master)](https://hub.docker.com/r/litespeedtech/openlitespeed)
 [![docker pulls](https://img.shields.io/docker/pulls/litespeedtech/openlitespeed?style=flat&color=blue)](https://hub.docker.com/r/litespeedtech/openlitespeed)
 [<img src="https://img.shields.io/badge/slack-LiteSpeed-blue.svg?logo=slack">](litespeedtech.com/slack) 
