@@ -1,4 +1,5 @@
 # OpenLiteSpeed WordPress Docker Container
+## CP Dev Docker Environment 
 [![Build Status](https://travis-ci.com/litespeedtech/ols-docker-env.svg?branch=master)](https://hub.docker.com/r/litespeedtech/openlitespeed)
 [![docker pulls](https://img.shields.io/docker/pulls/litespeedtech/openlitespeed?style=flat&color=blue)](https://hub.docker.com/r/litespeedtech/openlitespeed)
 [<img src="https://img.shields.io/badge/slack-LiteSpeed-blue.svg?logo=slack">](litespeedtech.com/slack) 
@@ -15,11 +16,21 @@ Edit the `.env` file to update the demo site domain, default MySQL user, and pas
 Feel free to check [Docker hub Tag page](https://hub.docker.com/repository/docker/litespeedtech/openlitespeed/tags) if you want to update default openlitespeed and php versions. 
 
 ## Installation
+Install Prerequisite Packages
+```
+sudo su
+apt-get update
+apt-get install docker
+apt-get install python3
+apt-get install python3-pip
+pip3 install docker-compose
+```
+
 Clone this repository or copy the files from this repository into a new folder:
 ```
 git clone https://github.com/cp-venture/ols-docker-env.git
-git submodule update --init --recursive
-git submodule update --remote --recursive
+cd ols-docker-env
+git submodule update --init --remote --recursive
 ```
 Open a terminal, `cd` to the folder in which `docker-compose.yml` is saved, and run:
 ```
