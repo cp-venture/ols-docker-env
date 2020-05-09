@@ -19,8 +19,12 @@ Feel free to check [Docker hub Tag page](https://hub.docker.com/repository/docke
 Install Prerequisite Packages
 ```
 sudo su
-apt-get update
-apt-get install docker
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt-get install docker-ce docker-ce-cli containerd.io
+
 apt-get install python3
 apt-get install python3-pip
 pip3 install docker-compose
