@@ -4,11 +4,18 @@ import subprocess
 import json
 import docker
 import os
+import time
+from getpass import getpass
+import subprocess
+
+project_dir = os.path.dirname(os.path.abspath(__file__))
+# os.environ['GIT_ASKPASS'] = os.path.join(project_dir, 'askpass.py')
+
 
 BUCKET_NAME = 'cp-backup-s3bucket'
 BACKUP_DIR_NAME = '.Backups'
 TEMP_DIR_NAME = '.temp'
-OLS_CONTAINER_NAME = 'olsdockerenv_litespeed_1'
+OLS_CONTAINER_NAME = 'ols-docker-env_litespeed_1'
 WP_PATH_REL = 'localhost/html'
 DOCKER_MAPPED_WP_PATH = None
 
@@ -29,13 +36,87 @@ cwd = c_ins.exec_run('sh -c "echo $PWD"')
 DOCKER_MAPPED_WP_PATH = os.path.join(str(cwd[1])[2:-3], WP_PATH_REL)
 ####################################
 print(DOCKER_MAPPED_WP_PATH)
+
 from git import Repo, repo
 repo_plugins = Repo(os.path.join('sites/',WP_PATH_REL, 'wp-content', 'plugins'))
 repo_theme = Repo(os.path.join('sites/',WP_PATH_REL, 'wp-content', 'themes', 'main'))
+repo_base = Repo(os.getcwd())
+
+
+def run(*args):
+    return subprocess.check_call(['git'] + list(args))
+
+subprocess.call('ssh-add ./githu_key', shell=True)
+subprocess.Popen(['git', 'config', '--global', 'user.email', '"wittycodes@gmail.com"'])
+subprocess.Popen(['git', 'config', '--global', 'user.password', '"aha@9857"'])
+
+import requests
+requests.get('https://api.github.com/notifications', auth=("wittycodes", "55c3eb8c69f032326dcb59a756397b38ea2a979b"))
+
+def configure(repo):
+    w = repo.config_writer()
+    w.set_value("user", "name", "wittycodes").release()
+    w.set_value("user", "email", "wittycodes@gmail.com").release()
+    w.set_value("user", "password", "aha@9857").release()
+    print(repo.config_reader().read())
+
+configure(repo_theme)
+configure(repo_plugins)
+configure(repo_base)
 
 def get_hash(repo):
     sha = repo.commit('master')
     return repo.git.rev_parse(sha, short=5)
+
+def push_tag(repo, tag):
+    repo.git.add(A=True)
+    try:
+        print(repo.git.commit("-m", f"auto commit for tag:{tag}"))
+        repo.remote().push()
+    except:
+        pass
+    try:
+        repo.create_tag(tag, message=f"checkpoint reached addressed by tag:{tag}")
+    except:
+        pass
+    print(repo.git.push('--tags'))
+
+def push_changes(tag):
+    push_tag(repo_plugins, tag)
+    push_tag(repo_theme, tag)
+#
+# repo_theme
+
+def pull_tag(repo, tag, revert):
+    repo.git.stash()
+    if revert:
+        repo.git.reset('--hard', str(tag))
+    else:
+        v = (repo.git.branch('-r')).split('\n')
+        print(v)
+        v = [i.strip() for i in v]
+        print(v)
+        l = []
+        a = ''
+        for i in v:
+            if i.startswith(f'origin/{tag}'):
+                try:
+                    l.append(int(a.split('.')[-1]))
+                except:
+                    pass
+        if len(l) != 0:
+            mx = max(l)
+        else:
+            mx = -1
+        repo.git.checkout(f'tags/{tag}', "-b", f'{tag}.{mx+1}')
+        repo.git.pull()
+    repo.git.push('--force')
+
+
+def pull_changes(tag, revert):
+    pull_tag(repo_plugins, tag)
+    pull_tag(repo_theme, tag)
+
 # import uuid
 # print(uuid.uuid4())
 # control_content = {
@@ -57,9 +138,10 @@ def get_hash(repo):
 # df=pd.read_json(json.dumps(control_content['control_data']), orient='index')
 # print(df)
 
-def set_sql_filename(timestamp=2242341123 ,theme_commit='ead45d', plugins_commit='34ced2', tagged=False):
-    sql_backup_filename = 'TM-{TM}_PG-{PG}.sql'
-    h = sql_backup_filename.format( TM=str(get_hash(repo_theme)).lower(), PG=str(get_hash(repo_plugins)).lower())
+def set_sql_filename(tag):
+    sql_backup_filename = 'TS-{TS}.TAG-{TAG}.sql'
+    ts = time.time()
+    h = sql_backup_filename.format( TS=str(round(ts)).lower(), TAG=str(tag).lower().replace('.', '_'))
     print(h)
     return h
 
@@ -122,18 +204,23 @@ def s3_download(key):
 
 # subprocess.call("ls -lha", shell=True, cwd='../../sites/localhost/html')
 
-a = set_sql_filename(plugins_commit=repo_plugins, theme_commit=repo_theme)
-fp = export_db(filename=a)
-s3_upload(file_path=fp, key=a)
-
-
-
-b = a
-fp = s3_download(key=b)
-import_db(file_path=fp)
-
-
-get_sql_filename(a)
+######### For Backup #########
+# tag = "12"
+#
+# push_changes(tag)
+# a = set_sql_filename(tag)
+# fp = export_db(filename=a)
+# s3_upload(file_path=fp, key=a)
+#
+#
+#
+# ########## For Restore ########
+# tag = "12"
+#
+# pull_changes(tag)
+# fp = s3_download(key=b)
+# import_db(file_path=fp)
+# get_sql_filename(a)
 
 """
 wp backup database export sql file
@@ -142,3 +229,5 @@ wp backup database export sql file
 - Branch 
 
 """
+push_changes('v1')
+

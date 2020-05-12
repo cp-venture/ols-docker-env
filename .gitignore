@@ -3,3 +3,6 @@ latest.yml
 config
 lsws/conf
 .idea
+sites/localhost/html
+.db_pass
+sites/logs

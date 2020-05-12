@@ -24,15 +24,24 @@ add-apt-repository \
    $(lsb_release -cs) \
    stable"
 apt-get update
+apt-get install awscli
 apt-get install docker-ce docker-ce-cli containerd.io
 apt-get install python3
 apt-get install python3-pip
 pip3 install docker-compose
 ```
 
+Setup Github Keys 
+```
+aws s3 cp s3://cp-backup-s3bucket/github_key ~/.ssh/
+eval $(ssh-agent -s)
+chmod 600 ~/.ssh/github_key
+ssh-add ~/.ssh/github_key
+```
+
 Clone this repository or copy the files from this repository into a new folder:
 ```
-git clone https://github.com/cp-venture/ols-docker-env.git
+git clone git@github.com:cp-venture/ols-docker-env.git
 cd ols-docker-env
 git submodule update --init --remote --recursive
 ```
