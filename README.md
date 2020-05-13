@@ -33,10 +33,10 @@ pip3 install docker-compose
 
 Setup Github Keys 
 ```
-aws s3 cp s3://cp-backup-s3bucket/github_key ~/.ssh/
+aws s3 cp s3://cp-backup-s3bucket/git_cp_venture.key ~/.ssh/
 eval $(ssh-agent -s)
-chmod 600 ~/.ssh/github_key
-ssh-add ~/.ssh/github_key
+chmod 600 ~/.ssh/git_cp_venture.key
+ssh-add ~/.ssh/git_cp_venture.key
 ```
 
 Clone this repository or copy the files from this repository into a new folder:
